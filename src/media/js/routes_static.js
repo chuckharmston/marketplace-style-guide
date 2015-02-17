@@ -24,6 +24,11 @@ define('routes_static', ['core/l10n'],
             template: '_index.html',
             title: null,
         },
+        'js-widgets': {
+            path: '/javascript-widgets',
+            template: 'js-widgets.html',
+            title: gettext('JavaScript Widgets'),
+        },
         'design-elements': {
             path: '/design-elements',
             template: 'design-elements.html',

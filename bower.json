@@ -14,5 +14,13 @@
     "fira": "0.1.0",
     "jeet": "6.1.2",
     "nib": "1.0.4"
-  }
+  },
+  "devDependencies": {
+    "document-register-element": "~0.1.6"
+  },
+  "ignore": [
+    "*.py",
+    "README.md",
+    "LICENSE"
+  ]
 }
