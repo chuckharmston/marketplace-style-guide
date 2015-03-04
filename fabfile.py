@@ -13,28 +13,24 @@ ROOT, PROJECT_NAME = helpers.get_app_dirs(__file__)
 
 
 @task
-def pre_update(ref):
-    with lcd(PROJECT_NAME):
-        local('git fetch')
-        local('git fetch -t')
-        local('git reset --hard %s' % ref)
-
-
-@task
-def update():
+def build():
     with lcd(PROJECT_NAME):
         local('npm install')
-        local('make update')
-        local('cp src/media/js/settings_local_hosted.js src/media/js/settings_local.js')
+        local('make install')
+        local('cp src/media/js/settings_local_hosted.js '
+              'src/media/js/settings_local.js')
         local('make build')
         local('node_modules/.bin/commonplace langpacks')
 
 
 @task
-def deploy():
-    helpers.deploy(name=settings.PROJECT_NAME,
-                   app_dir='my-commonplace-app',
-                   env=settings.ENV,
-                   cluster=settings.CLUSTER,
-                   domain=settings.DOMAIN,
-                   root=ROOT)
+def deploy_jenkins():
+    r = helpers.build_rpm(name=settings.PROJECT_NAME,
+                          app_dir='marketplace-style-guide',
+                          env=settings.ENV,
+                          cluster=settings.CLUSTER,
+                          domain=settings.DOMAIN,
+                          root=ROOT)
+
+    r.local_install()
+    r.remote_install(['web'])
