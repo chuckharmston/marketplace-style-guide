@@ -1,4 +1,4 @@
-define('helpers_local', ['log', 'nunjucks', 'routes_static'],
+define('helpers_local', ['core/log', 'core/nunjucks', 'routes_static'],
     function(log, nunjucks, routes) {
 
     var logger = log('helpers_local')

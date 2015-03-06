@@ -8,7 +8,8 @@ processing.
 
 TODO: pull this into core-modules (chuck).
 */
-define('views/static', ['l10n', 'routes_static'], function(l10n, routes) {
+define('views/static', ['core/l10n', 'routes_static'],
+    function(l10n, routes) {
     var gettext = l10n.gettext;
     return function(builder) {
         var route = (function() {

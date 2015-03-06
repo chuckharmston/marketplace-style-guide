@@ -15,7 +15,8 @@ This route can then be reversed in templates like:
 */
 (function() {
 
-define('routes_static', ['l10n'], function(l10n) {
+define('routes_static', ['core/l10n'],
+    function(l10n) {
     var gettext = l10n.gettext;
     return {
         'index': {
