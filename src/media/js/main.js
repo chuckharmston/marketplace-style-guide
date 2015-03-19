@@ -1,25 +1,26 @@
-console.log('Sample Commonplace App');
+/*
+    The main file that initializes the app.
+    Only put initialization code in here. Everything else should go into
+    separate and appropriate modules. This is not your diaper.
+*/
+console.log('Firefox Marketplace App');
 
-define('main', ['init', 'routes', 'settings_app'], function() {
-require([
-    'core/forms',  // Comment this if your app has no forms.
-    'core/l10n',
-    'core/log',
-    'core/login',  // Comment this if your app does not have accounts.
-    'core/navigation',
-    'core/settings',
-    'core/user',  // Comment this if your app does not have accounts.
-    'core/z',
-    'templates',
-], function(forms, l10n, log, login, navigation, settings, user, z, nunjucks) {
+define('main', ['init'], function(init) {
+init.done(function() {
+require(
+    [// Modules actually used in main.
+     'core/l10n', 'core/log', 'core/navigation', 'core/nunjucks',
+     'core/settings', 'core/user', 'core/z',
+     // Modules we require to initialize global stuff.
+     'core/forms', 'core/login'],
+    function(l10n, log, navigation, nunjucks,
+             settings, user, z) {
     var logger = log('main');
-
-    logger.log('Dependencies resolved, starting init');
 
     z.body.addClass('html-' + l10n.getDirection());
 
-    // Do some last minute template compilation.
     z.page.on('reload_chrome', function() {
+        // Last minute template compilation.
         logger.log('Reloading chrome');
         $('#site-header').html(
             nunjucks.env.render('_includes/header.html'));
@@ -32,14 +33,13 @@ require([
 
     z.body.on('click', '.site-header .back', function(e) {
         e.preventDefault();
-        logger.log('← button pressed');
         navigation.back();
     });
 
     // Perform initial navigation.
-    logger.log('Triggering initial navigation');
-    z.page.trigger('navigate', [window.location.pathname + window.location.search]);
-
-    logger.log('Initialization complete');
+    z.page.trigger('navigate',
+                   [window.location.pathname + window.location.search]);
+    logger.log('Done');
+});
 });
 });

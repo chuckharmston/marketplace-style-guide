@@ -1,13 +1,10 @@
+/*
+    Contains things to initialize before we kick off the app.
+    Exposes a promise that the `main` module should wait on.
+*/
 define('init',
-    ['core/init', 'core/log', 'helpers_local', 'routes', 'settings_app'],
-    function(init, log, helpers_local, routes, settingsApp) {
+    ['core/init', 'helpers_local', 'routes', 'settings_app', 'templates'],
+    function(init, helpersLocal, routes, settingsApp, templates) {
 
-    var logger = log('init');
-    logger.log('dependencies loaded');
-
-    // Put any code that needs to run to initialize the app here or in the
-    // dependencies.
-
-    logger.log('done');
+    return init.ready;
 });
-

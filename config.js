@@ -29,7 +29,7 @@ var localConfig = extend(true, {
             // 'underscore': { 'exports': '_' }
         }
     },
-    PORT: 8690
+    PORT: 8680
 }, config);
 
 localConfig.inlineRequireConfig = config.makeInlineRequireConfig(
