@@ -1,0 +1,48 @@
+<mkt-nav role="navigation" id="site-nav">
+
+  <mkt-nav-root>
+    <li class="mkt-nav--home mkt-nav--item"><a class="mkt-nav--link" href="/">{{ _('Home') }}</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" data-toggle-subnav="design-elements" href="#">{{ _('Design Elements') }}</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" data-toggle-subnav="ui-components" href="#">{{ _('UI Components') }}</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="{{ url_static('js-widgets') }}">{{ _('JavaScript Widgets') }}</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" data-toggle-subnav="categories" href="#">{{ _('Categories') }}</a></li>
+  </mkt-nav-root>
+
+  <mkt-nav-child id="design-elements">
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Color Palettes</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="{{ url_static('typography') }}">Typography</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Icons</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Logos</a></li>
+  </mkt-nav-child>
+
+  <mkt-nav-child id="ui-components">
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">1</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">2</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">3</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">4</a></li>
+  </mkt-nav-child>
+
+  <mkt-nav-child id="categories">
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Games</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Business</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Entertainment</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Lifestyle</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Music</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Photo &amp; Video</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Reference</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Social</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Travel</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Books</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Education</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Health &amp; Fitness</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Maps &amp; Nav</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">News &amp; Weather</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Productivity</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Shopping</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Sports</a></li>
+    <li class="mkt-nav--item"><a class="mkt-nav--link" href="">Utilities</a></li>
+  </mkt-nav-child>
+
+  <button class="mkt-nav--back" data-toggle-subnav></button>
+
+</mkt-nav>

@@ -1,0 +1,35 @@
+@require('../../constants/colors.styl');
+
+$nav--header-height = 60px;
+$nav--width = 260px;
+
+$nav--to-shift = '#site-header, main, $site-footer';
+$nav--subnav-to-shift = 'mkt-nav-root';
+
+$color--nav--child-bg = #1A95FC;
+$color--nav--child-border = darken($color--nav--child-bg, 25%);
+$color--nav--child-back = #28A0FC;
+$color--nav--child-back-border = darken($color--nav--child-back, 25%);
+$color--nav--root-link = #333;
+$color--nav--gradient = linear-gradient(top, #9E1455, #601E78, #052659);
+
+$nav--transition = 'transform cubic-bezier(0.455, 0.03, 0.515, 0.955) 250ms';
+
+
+nav--visible() {
+    .mkt-nav--visible & {
+        {block}
+    }
+}
+
+nav--subnav-visible() {
+    .mkt-nav--subnav-visible & {
+        {block}
+    }
+}
+
+nav--full-size() {
+    +mq--above($breakpoint--l-min) {
+        {block}
+    }
+}

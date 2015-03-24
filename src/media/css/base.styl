@@ -1,13 +1,21 @@
 @import 'constants';
+@import 'elements/nav/constants';
+@import 'zindex';
     
 html {
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 *,
 *:before,
 *:after {
     box-sizing: inherit;
 }
+
+body, html {
+    height: 100%;
+}
+
     
 a {
     text-decoration: none;
@@ -28,36 +36,33 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    min-height: 50px;
-    padding: 0 10px;
-    
+    min-height: 60px;
+    padding: 0 5px;
+    position: relative;
+    z-index: $zindex--header;
+
     +mq--desktop-nav() {
         min-height: 60px;
-        padding: 16px 15px 14px;
+        padding: 0 20px;
     }
     
     h1 {
         align-items: center;
         display: flex;
         height: 50px;
-        +mq--desktop-nav() {
-            height: auto;
-        }
+        order: 2;
     }
     
     // Marketplace logo.
     .wordmark {
-        image-replacement('../img/logo.png', 34px, 36px);
-        background-size: 165px 36px;
-        +mq--full-logo() {
-            image-replacement('../img/logo.png', 165px, 36px);
-        }
+        image-replacement('../img/logo/rocket-color.svg', 26px, 40px);
     }
     
     // Project name, appearing to the right of the Marketplace logo.
     .site-name {
         border-left: 1px solid $color--header--separator;
         color: $color--header--site-name;
+        display: none;
         font-size: 16px;
         font-weight: 300;
         margin-left: 8px;
@@ -68,84 +73,53 @@ body {
     // Hamburger icon that toggles the menu visibility at smaller screen sizes.
     .hamburger {
         image-replacement('../img/icon/menu.svg', 40px, 40px);
-        background-position: 10px 10px;
-        background-size: 20px 20px;
+        background-position: 0 0;
+        background-size: 40px 140px;
         appearance: none;
         border: 0;
         cursor: pointer;
         display: inline-block;
+        order: 1;
         relative: left 5px;
-        transform: rotate(180deg);
-        .show-nav & {
-            transform: none;
+        &:hover {
+            background-position: 0 -50px;
+        }
+        &:active {
+            background-position: 0 -100px;
+        }
+        +nav--visible() {
+            background-position: 0 -100px;
         }
         +mq--desktop-nav() {
             display: none;
+            order: 3;
         }
     }
-
-    // Primary navigation.
-    nav {
-        border-top: 1px solid $color--navigation--border;
-        display: none;
-        margin: 0 5px;
-        padding: 5px 0;
-        width: 100%;
-        +mq--desktop-nav() {
-            background: transparent;
-            border: 0;
-            display: block;
-            margin: 0;
-            padding: 0;
-            width: auto;
-        }
-        .show-nav & {
-            display: block;
-        }
-        ul {
-            align-content: stretch;
-            align-items: center;
-            display: flex;
-            flex-grow: 1;
-            flex-wrap: wrap;
-            font-size: 14px;
-            font-weight: 300;
-            justify-content: center;
-            +mq--desktop-nav() {
-                align-content: flex-end;
-                flex-grow: 0;
-                justify-content: flex-end;
-            }
-        }
-        li {
-            display: inline-block;
-            margin: 5px 10px;
-            +mq--desktop-nav() {
-                margin: 0 8px 0 0;
-                &:last-child {
-                    margin-right: 0;
-                }
-            }
-        }
-        a {
-            color: $color--navigation--link;
-            display: inline-block;
-            padding: 4px;
-            &:hover {
-                border-bottom: 2px solid $color--navigation--hover-underline;
-                color: $color--navigation--hover;
-                padding-bottom: 2px;
-                text-decoration: none;
-            }
-        }
-        .active a {
-            border-bottom: 2px solid $color--primary--yellow;
-            color: $color--navigation--active;
-            font-weight: 400;
-            padding-bottom: 2px;
-        }
+    
+    .shim {
+        display: inline-block;
+        order: 3;
+        width: 40px;
     }
 
+}
+
+main,
+#site-header {
+    transition: transform cubic-bezier(0.86, 0, 0.07, 1) 333ms;
+    
+    .nav--show-l1 & {
+        transform: translateX(260px);
+    }
+}
+
+
+body > main {
+    background: $color--greyscale--lighter;
+    height 100%;
+    min-height 100%;
+    position: relative;
+    z-index: $zindex--body;
 }
 
 #page {
