@@ -21,12 +21,16 @@ require(
         var $footer = $('#site-footer');
 
         $header.html(nunjucks.env.render('_includes/header.html'));
-        $(nunjucks.env.render('_includes/nav.html')).insertAfter($header)
+        $(nunjucks.env.render('_includes/nav.html')).insertAfter($header);
         $footer.html(nunjucks.env.render('_includes/footer.html'));
 
         z.body.toggleClass('logged-in', user.logged_in());
         z.page.trigger('reloaded_chrome');
     }).trigger('reload_chrome');
+
+    z.page.on('loaded', function() {
+        z.body.addClass('loaded');
+    });
 
     // Perform initial navigation.
     z.page.trigger('navigate',

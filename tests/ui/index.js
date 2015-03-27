@@ -1,5 +1,3 @@
-var helpers = require('../lib/helpers');
-
 function testHomepage(test) {
     test.assertTitle('Firefox Marketplace Style Guide');
     test.assertVisible('.wordmark');
@@ -16,41 +14,42 @@ function testHamburger(test) {
 
 casper.test.begin('Test mobile homepage', {
     test: function(test) {
-        helpers.startCasper({path: '/'});
+        helpers.startCasper();
 
         helpers.waitForPageLoaded(function() {
-            testHomepage(test)
+            testHomepage(test);
             test.assertNotVisible('#site-footer');
-            testHamburger(test)
+            testHamburger(test);
         });
 
         helpers.done(test);
     }
 });
 
-casper.test.begin('Test tablet homepage', helpers.tabletTest({
+casper.test.begin('Test tablet homepage', {
     test: function(test) {
-        helpers.startCasper({path: '/'});
+        helpers.startCasper({viewport: 'tablet'});
 
         helpers.waitForPageLoaded(function() {
-            testHomepage(test)
+            testHomepage(test);
             test.assertNotVisible('#site-footer');
-            testHamburger(test)
+            testHamburger(test);
         });
+
         helpers.done(test);
     }
-}));
+});
 
-casper.test.begin('Test desktop homepage', desktopTest({
+casper.test.begin('Test desktop homepage', {
     test: function(test) {
-        helpers.startCasper();
+        helpers.startCasper({viewport: 'desktop'});
 
         helpers.waitForPageLoaded(function() {
-            testHomepage(test)
+            testHomepage(test);
             test.assertNotVisible('.hamburger');
             test.assertVisible('#site-footer');
         });
 
         helpers.done(test);
     }
-}));
+});

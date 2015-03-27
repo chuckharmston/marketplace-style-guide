@@ -27,7 +27,7 @@ define('settings_app',
 
         switches: [],
 
-        title_suffix: 'Marketplace Style Guide'
+        title_suffix: 'Firefox Marketplace Style Guide'
     });
 
     settings._extend(localSettings);

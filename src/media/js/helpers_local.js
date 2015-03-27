@@ -1,7 +1,7 @@
 define('helpers_local', ['core/log', 'core/nunjucks', 'routes_static'],
     function(log, nunjucks, routes) {
 
-    var logger = log('helpers_local')
+    var logger = log('helpers_local');
     var filters = nunjucks.require('filters');
     var globals = nunjucks.require('globals');
 
