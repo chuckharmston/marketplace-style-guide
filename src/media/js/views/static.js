@@ -4,7 +4,7 @@ the static_routes module.
 
 This kind of approach makes sense for the marketplace-style-guide project, as
 the majority of views are simple HTML templates that require no view-level
-processing. 
+processing.
 
 TODO: pull this into core-modules (chuck).
 */
@@ -27,9 +27,7 @@ define('views/static', ['core/l10n', 'routes_static'],
         if (route) {
             builder.start('views/' + route.template);
             builder.z('type', 'static');
-            if (route.title) {
-                builder.z('title', route.title);                
-            }
+            builder.z('title', route.title);
         } else {
             builder.start('errors/404.html');
             builder.z('type', 'error');

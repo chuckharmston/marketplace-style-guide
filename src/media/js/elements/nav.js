@@ -22,7 +22,6 @@ define('elements/nav',
             */
             toggle: {
                 value: function(bool) {
-                    $
                     this.$statusElement.toggleClass(VISIBLE, bool);
                     return this;
                 },
@@ -45,7 +44,15 @@ define('elements/nav',
 
             // Return the element on which status classes are stored.
             $statusElement: {
-                value: $(document.body),
+                get: function() {
+                    if (!this._statusElement) {
+                        this.$statusElement = document.body;
+                    }
+                    return this._statusElement;
+                },
+                set: function(el) {
+                    this._statusElement = $(el);
+                }
             },
 
             // Return the child <mkt-nav-root> element.
